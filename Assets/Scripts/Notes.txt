@@ -1,0 +1,119 @@
+
+
+Five core parts of VertexData.
+
+    - Vertices (position): 
+        * This is a float3 and will act as the position of the vertices.
+
+        * 4 vertices to make a quad. 
+        * 24 vertices to make a cube.
+
+
+    - Indices: 
+        * Indices are the order in which vertices are connected together. 
+        * An indice is just an int ID that points to a vertex.
+
+        * 3 indices to draw a triangle.
+        * 6 indices to draw a quad. 
+        * 36 indices are needed to make a cube.
+    
+
+    - Normals: 
+        * A normal is a normalized vector direction that define how light interacts with the surface of the geometry. 
+        * Used in lighting calculations.
+    
+    - Tangent: 
+        * A tangent is a normalized vector direction similar to normals but lay on the surface of the geometry. 
+        * Used in lighting calculations.
+    
+    - UV0: 
+        * Will be used to define the texture coordinates mapped to a 2D texture.
+
+----------------------------------------------------------------------------------------------------------------------------------
+
+[Pure] 
+    This means that the function does not modify any member variables of the class or struct. 
+    It is only used to return or calculate a value. 
+    (Part of System.Diagnostics.Contracts.)
+    
+    
+[MethodImpl(MethodImplOptions.AggressiveInlining)] 
+    This is a fancy attribute that will tell the compiler to inline the method. 
+    We use this as an optimization to inline the method code at the call site, instead of calling the method. 
+        
+    It's like if you copy and pasted the contents of the method in place of where you called the method. 
+    This helps reduce the small overhead of calling methods and perfect for creating optimized code. 
+    (Part of System.Runtime.CompilerServices.)
+
+    Inlining - An inline function is one for which the compiler copies the code from the function definition 
+        directly into the code of the calling function rather than creating a separate set of instructions in memory. 
+        This eliminates call-linkage overhead and can expose significant optimization opportunities.
+
+
+
+UnsafeList<T> - An unmanaged, resizable list, without any thread safety check features.
+
+
+
+unsafe is necessary to deal in pointers.
+
+fixed has two uses:
+
+    it allows you to pin an array and obtain a pointer to the data.
+
+    when used in an unsafe struct field, it declares a "fixed buffer" - a reserved block of space in a type that is accessed via pointers rather than regular fields
+
+
+
+STRUCTS
+    * Structs can have members that are methods, fields, indexers, operator methods, properties or events. 
+
+    * The members can have access specifiers as public, private, and internal.
+
+    * Pointers are variables that store the addresses of the same type of variable 
+    i.e. an int pointer can store an address of an integer, 
+    a char pointer can store an address of a char 
+    and similarly for all other data types, fundamental or user-defined.
+
+    * You can access a structure member using pointers, of type structure, in the following ways;
+
+    1) Using the arrow operator: 
+
+        If the members of the structure are public then you can directly access them using the arrow operator ( -> ). 
+        If they are private then you can define methods for accessing the values and use pointers to access the methods. 
+        The arrow operator can be used to access structure variables as well as methods.
+
+        PointerName->memberName;
+
+
+    2) Using Dereferencing operator: 
+    
+        You can also access structure elements using the dereferencing operator on the pointer, 
+        which is using an asterisk to dereference the pointer and then using the dot operator to specify the structure element.
+
+        (*PointerName).MemberName;
+
+
+
+
+
+
+Structs:
+
+    Chunk
+    Block
+    ChunkWorld
+    VertexData
+    BlockDefinition
+    BlockTypeEquatable
+    MaterialIndexMapping
+
+    BuildBlocksJob
+    BuildChunkMeshJob
+    BuildChunkWorldJob
+    FillBlocksJob
+    InitializeBlocksJob
+
+
+
+    
